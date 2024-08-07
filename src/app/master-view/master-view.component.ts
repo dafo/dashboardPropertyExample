@@ -1,4 +1,4 @@
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RevealSdkSettings, RevealViewOptions } from '@revealbi/ui';
 import { StateService } from '../services/state.service';
 
@@ -10,7 +10,7 @@ import { StateService } from '../services/state.service';
   styleUrls: ['./master-view.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MasterViewComponent implements OnInit {
+export class MasterViewComponent {
   dashboardOptions: RevealViewOptions = {
     visualizations: {
       menu: {
@@ -19,7 +19,9 @@ export class MasterViewComponent implements OnInit {
       }
     }
   };
-  constructor(protected stateService: StateService) { }
+  constructor(protected stateService: StateService) {
+    //RevealSdkSettings.serverUrl = this.stateService.myURL;
+  }
 
   ngOnInit() {
     RevealSdkSettings.serverUrl = this.stateService.myURL;
